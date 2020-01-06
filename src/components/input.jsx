@@ -24,7 +24,7 @@ export default function input() {
     })
   }
   return (
-    <form class="ui form" onSubmit={addTherapist}>
+    <form class="equal width form" onSubmit={addTherapist}>
       <div class="field">
         <label>
           Last Name
