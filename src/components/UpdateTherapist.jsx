@@ -2,32 +2,33 @@ import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom'
 
-export default function NewTherapist() {
+export default function UpdateTherapist(props) {
   const [therapist, setTherapist] = useState([])
-  const [allTherapists, setAllTherapists] = useState([])
+
+  const currentTherapist = props.match.params.id
 
   useEffect(() => {
     axios
-      .get('https://neurosomatic-therapist-api.herokuapp.com/api/Therapist')
+      .get(
+        `https://neurosomatic-therapist-api.herokuapp.com/api/Therapist/${currentTherapist}`
+      )
       .then(resp => {
-        setAllTherapists(resp.data)
-        console.log(resp.data)
+        setTherapist(resp.data)
       })
-  }, [])
+  }, [currentTherapist])
 
-  const addTherapist = e => {
+  const update = e => {
     e.preventDefault()
     const data = { ...therapist }
     axios
-      .post(
-        'https://neurosomatic-therapist-api.herokuapp.com/api/Therapist',
+      .put(
+        `https://neurosomatic-therapist-api.herokuapp.com/api/Therapist/${currentTherapist}`,
         data
       )
-      .then(resp => {
-        console.log('new therapist added', resp.data)
-      }, [])
+      .then(resp => {}, [])
     e.target.reset()
   }
+
   const updateValue = e => {
     const name = e.target.name
     const value = e.target.value
@@ -37,24 +38,10 @@ export default function NewTherapist() {
     })
   }
 
-  const deleteTherapist = therapist => {
-    let deletedTherapist = therapist.id
-    axios
-      .delete(
-        `https://neurosomatic-therapist-api.herokuapp.com/api/Therapist/${deletedTherapist}`
-      )
-      .then(resp => {
-        setTherapist(oldTherapists =>
-          oldTherapists.filter(f => f.id !== therapist.id)
-        )
-        window.location.reload()
-      })
-  }
-
   return (
     <section>
       <div>
-        <form className="ui equal width form" onSubmit={addTherapist}>
+        <form className="ui equal width form" onSubmit={update}>
           <div className="fields">
             <div className="field">
               <label>
@@ -63,6 +50,7 @@ export default function NewTherapist() {
                   type="text"
                   name="firstName"
                   placeholder="First Name"
+                  value={therapist.firstName}
                   onChange={e => updateValue(e)}
                 ></input>
               </label>
@@ -74,7 +62,7 @@ export default function NewTherapist() {
                   type="text"
                   name="lastName"
                   placeholder="Last Name"
-                  onChange={e => updateValue(e)}
+                  value={therapist.lastName}
                 ></input>
               </label>
             </div>
@@ -85,7 +73,7 @@ export default function NewTherapist() {
                   type="text"
                   name="workPhone"
                   placeholder="Work Number"
-                  onChange={e => updateValue(e)}
+                  value={therapist.workPhone}
                 ></input>
               </label>
             </div>
@@ -96,7 +84,7 @@ export default function NewTherapist() {
                   type="text"
                   name="homePhone"
                   placeholder="Home Number"
-                  onChange={e => updateValue(e)}
+                  value={therapist.homePhone}
                 ></input>
               </label>
             </div>
@@ -109,7 +97,7 @@ export default function NewTherapist() {
                   type="text"
                   name="street"
                   placeholder="Street Address"
-                  onChange={e => updateValue(e)}
+                  value={therapist.street}
                 ></input>
               </label>
             </div>
@@ -120,7 +108,7 @@ export default function NewTherapist() {
                   type="text"
                   name="city"
                   placeholder="City"
-                  onChange={e => updateValue(e)}
+                  value={therapist.city}
                 ></input>
               </label>
             </div>
@@ -131,7 +119,7 @@ export default function NewTherapist() {
                   type="text"
                   name="state"
                   placeholder="State"
-                  onChange={e => updateValue(e)}
+                  value={therapist.state}
                 ></input>
               </label>
             </div>
@@ -142,7 +130,7 @@ export default function NewTherapist() {
                   type="text"
                   name="zip"
                   placeholder="Zip Code"
-                  onChange={e => updateValue(e)}
+                  value={therapist.zip}
                 ></input>
               </label>
             </div>
@@ -153,7 +141,7 @@ export default function NewTherapist() {
                   type="text"
                   name="email"
                   placeholder="Email"
-                  onChange={e => updateValue(e)}
+                  value={therapist.email}
                 ></input>
               </label>
             </div>
@@ -166,7 +154,7 @@ export default function NewTherapist() {
                   type="text"
                   name="p101"
                   placeholder="p101"
-                  onChange={e => updateValue(e)}
+                  value={therapist.p101}
                 ></input>
               </label>
             </div>
@@ -177,7 +165,7 @@ export default function NewTherapist() {
                   type="text"
                   name="s1"
                   placeholder="s1"
-                  onChange={e => updateValue(e)}
+                  value={therapist.s1}
                 ></input>
               </label>
             </div>
@@ -188,7 +176,7 @@ export default function NewTherapist() {
                   type="text"
                   name="s2"
                   placeholder="s2"
-                  onChange={e => updateValue(e)}
+                  value={therapist.s2}
                 ></input>
               </label>
             </div>
@@ -199,7 +187,7 @@ export default function NewTherapist() {
                   type="text"
                   name="s3"
                   placeholder="s3"
-                  onChange={e => updateValue(e)}
+                  value={therapist.s3}
                 ></input>
               </label>
             </div>
@@ -210,7 +198,7 @@ export default function NewTherapist() {
                   type="text"
                   name="s4"
                   placeholder="s4"
-                  onChange={e => updateValue(e)}
+                  value={therapist.s4}
                 ></input>
               </label>
             </div>
@@ -223,7 +211,7 @@ export default function NewTherapist() {
                   type="text"
                   name="p202"
                   placeholder="p202"
-                  onChange={e => updateValue(e)}
+                  value={therapist.p202}
                 ></input>
               </label>
             </div>
@@ -234,7 +222,7 @@ export default function NewTherapist() {
                   type="text"
                   name="n1"
                   placeholder="n1"
-                  onChange={e => updateValue(e)}
+                  value={therapist.n1}
                 ></input>
               </label>
             </div>
@@ -245,7 +233,7 @@ export default function NewTherapist() {
                   type="text"
                   name="n2"
                   placeholder="n2"
-                  onChange={e => updateValue(e)}
+                  value={therapist.n2}
                 ></input>
               </label>
             </div>
@@ -256,7 +244,7 @@ export default function NewTherapist() {
                   type="text"
                   name="n3"
                   placeholder="n3"
-                  onChange={e => updateValue(e)}
+                  value={therapist.n3}
                 ></input>
               </label>
             </div>
@@ -267,7 +255,7 @@ export default function NewTherapist() {
                   type="text"
                   name="n4"
                   placeholder="n4"
-                  onChange={e => updateValue(e)}
+                  value={therapist.n4}
                 ></input>
               </label>
             </div>
@@ -280,7 +268,7 @@ export default function NewTherapist() {
                   type="text"
                   name="bach"
                   placeholder="Bach"
-                  onChange={e => updateValue(e)}
+                  value={therapist.Bach}
                 ></input>
               </label>
             </div>
@@ -291,7 +279,7 @@ export default function NewTherapist() {
                   type="text"
                   name="certified"
                   placeholder="Certified"
-                  onChange={e => updateValue(e)}
+                  value={therapist.certified}
                 ></input>
               </label>
             </div>
@@ -302,7 +290,7 @@ export default function NewTherapist() {
                   type="text"
                   name="seminarsTaken"
                   placeholder="Seminars Taken"
-                  onChange={e => updateValue(e)}
+                  value={therapist.seminarsTaken}
                 ></input>
               </label>
             </div>
@@ -313,33 +301,13 @@ export default function NewTherapist() {
                   type="text"
                   name="website"
                   placeholder="Website"
-                  onChange={e => updateValue(e)}
+                  value={therapist.website}
                 ></input>
               </label>
             </div>
           </div>
           <button>Submit</button>
         </form>
-      </div>
-      <div>
-        <Link to="/Import">Or upload file</Link>
-      </div>
-      <div>
-        <ul>
-          {allTherapists.map(therapist => {
-            return (
-              <li>
-                <p>{therapist.lastName}</p>
-                <button onClick={() => deleteTherapist(therapist)}>
-                  Delete
-                </button>
-                <button>
-                  <Link to={'/updateTherapist/' + therapist.id}>Update</Link>
-                </button>
-              </li>
-            )
-          })}
-        </ul>
       </div>
     </section>
   )
