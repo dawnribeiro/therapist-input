@@ -2,9 +2,8 @@ import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 
 export default function NewTherapist() {
-  const [therapist, setTherapist] = useState({})
-  const [allTherapists, setAllTherapists] = useState({})
-  const addedTherapist = allTherapists[0].LastName
+  const [therapist, setTherapist] = useState([])
+  const [allTherapists, setAllTherapists] = useState([])
 
   useEffect(() => {
     axios
@@ -36,13 +35,20 @@ export default function NewTherapist() {
       return data
     })
   }
-  const mapTherapist = allTherapists.map(therapist => {
-    return (
-      <li>
-        <p>{therapist.LastName}</p>
-      </li>
-    )
-  })
+
+  const deleteTherapist = therapist => {
+    let deletedTherapist = therapist.id
+    axios
+      .delete(
+        `https://neurosomatic-therapist-api.herokuapp.com/api/Therapist/${deletedTherapist}`
+      )
+      .then(resp => {
+        setTherapist(oldTherapists =>
+          oldTherapists.filter(f => f.id !== therapist.id)
+        )
+        window.location.reload()
+      })
+  }
 
   return (
     <section>
@@ -315,7 +321,21 @@ export default function NewTherapist() {
         </form>
       </div>
       <div>
-        <ul>{addedTherapist ? mapTherapist : 'No Therapist'}</ul>
+        <ul>
+          {allTherapists.map(therapist => {
+            return (
+              <li>
+                <p>{therapist.lastName}</p>
+                <button onClick={() => deleteTherapist(therapist)}>
+                  Delete
+                </button>
+                {/* <button onClick={() => updateTherapist(therapist)}>
+                  Update
+                </button> */}
+              </li>
+            )
+          })}
+        </ul>
       </div>
     </section>
   )
