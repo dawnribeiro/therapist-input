@@ -3,7 +3,7 @@ import axios from 'axios'
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom'
 
 export default function UpdateTherapist(props) {
-  const [therapist, setTherapist] = useState([])
+  const [specificTherapist, setSpecificTherapist] = useState([])
 
   const currentTherapist = props.match.params.id
 
@@ -13,26 +13,28 @@ export default function UpdateTherapist(props) {
         `https://neurosomatic-therapist-api.herokuapp.com/api/Therapist/${currentTherapist}`
       )
       .then(resp => {
-        setTherapist(resp.data)
+        setSpecificTherapist(resp.data)
       })
   }, [currentTherapist])
 
   const update = e => {
     e.preventDefault()
-    const data = { ...therapist }
+    const data = { ...specificTherapist }
     axios
       .put(
         `https://neurosomatic-therapist-api.herokuapp.com/api/Therapist/${currentTherapist}`,
         data
       )
-      .then(resp => {}, [])
-    e.target.reset()
+      .then(resp => {
+        setSpecificTherapist(resp.data)
+        console.log(resp.data)
+      })
   }
 
   const updateValue = e => {
     const name = e.target.name
     const value = e.target.value
-    setTherapist(data => {
+    setSpecificTherapist(data => {
       data[name] = value
       return data
     })
@@ -50,7 +52,7 @@ export default function UpdateTherapist(props) {
                   type="text"
                   name="firstName"
                   placeholder="First Name"
-                  value={therapist.firstName}
+                  value={specificTherapist.firstName}
                   onChange={e => updateValue(e)}
                 ></input>
               </label>
@@ -62,7 +64,8 @@ export default function UpdateTherapist(props) {
                   type="text"
                   name="lastName"
                   placeholder="Last Name"
-                  value={therapist.lastName}
+                  value={specificTherapist.lastName}
+                  onChange={e => updateValue(e)}
                 ></input>
               </label>
             </div>
@@ -73,7 +76,8 @@ export default function UpdateTherapist(props) {
                   type="text"
                   name="workPhone"
                   placeholder="Work Number"
-                  value={therapist.workPhone}
+                  value={specificTherapist.workPhone}
+                  onChange={e => updateValue(e)}
                 ></input>
               </label>
             </div>
@@ -84,7 +88,8 @@ export default function UpdateTherapist(props) {
                   type="text"
                   name="homePhone"
                   placeholder="Home Number"
-                  value={therapist.homePhone}
+                  value={specificTherapist.homePhone}
+                  onChange={e => updateValue(e)}
                 ></input>
               </label>
             </div>
@@ -97,7 +102,8 @@ export default function UpdateTherapist(props) {
                   type="text"
                   name="street"
                   placeholder="Street Address"
-                  value={therapist.street}
+                  value={specificTherapist.street}
+                  onChange={e => updateValue(e)}
                 ></input>
               </label>
             </div>
@@ -108,7 +114,8 @@ export default function UpdateTherapist(props) {
                   type="text"
                   name="city"
                   placeholder="City"
-                  value={therapist.city}
+                  value={specificTherapist.city}
+                  onChange={e => updateValue(e)}
                 ></input>
               </label>
             </div>
@@ -119,7 +126,8 @@ export default function UpdateTherapist(props) {
                   type="text"
                   name="state"
                   placeholder="State"
-                  value={therapist.state}
+                  value={specificTherapist.state}
+                  onChange={e => updateValue(e)}
                 ></input>
               </label>
             </div>
@@ -130,7 +138,8 @@ export default function UpdateTherapist(props) {
                   type="text"
                   name="zip"
                   placeholder="Zip Code"
-                  value={therapist.zip}
+                  value={specificTherapist.zip}
+                  onChange={e => updateValue(e)}
                 ></input>
               </label>
             </div>
@@ -141,7 +150,8 @@ export default function UpdateTherapist(props) {
                   type="text"
                   name="email"
                   placeholder="Email"
-                  value={therapist.email}
+                  value={specificTherapist.email}
+                  onChange={e => updateValue(e)}
                 ></input>
               </label>
             </div>
@@ -154,7 +164,8 @@ export default function UpdateTherapist(props) {
                   type="text"
                   name="p101"
                   placeholder="p101"
-                  value={therapist.p101}
+                  value={specificTherapist.p101}
+                  onChange={e => updateValue(e)}
                 ></input>
               </label>
             </div>
@@ -165,7 +176,8 @@ export default function UpdateTherapist(props) {
                   type="text"
                   name="s1"
                   placeholder="s1"
-                  value={therapist.s1}
+                  value={specificTherapist.s1}
+                  onChange={e => updateValue(e)}
                 ></input>
               </label>
             </div>
@@ -176,7 +188,8 @@ export default function UpdateTherapist(props) {
                   type="text"
                   name="s2"
                   placeholder="s2"
-                  value={therapist.s2}
+                  value={specificTherapist.s2}
+                  onChange={e => updateValue(e)}
                 ></input>
               </label>
             </div>
@@ -187,7 +200,8 @@ export default function UpdateTherapist(props) {
                   type="text"
                   name="s3"
                   placeholder="s3"
-                  value={therapist.s3}
+                  value={specificTherapist.s3}
+                  onChange={e => updateValue(e)}
                 ></input>
               </label>
             </div>
@@ -198,7 +212,8 @@ export default function UpdateTherapist(props) {
                   type="text"
                   name="s4"
                   placeholder="s4"
-                  value={therapist.s4}
+                  value={specificTherapist.s4}
+                  onChange={e => updateValue(e)}
                 ></input>
               </label>
             </div>
@@ -211,7 +226,8 @@ export default function UpdateTherapist(props) {
                   type="text"
                   name="p202"
                   placeholder="p202"
-                  value={therapist.p202}
+                  value={specificTherapist.p202}
+                  onChange={e => updateValue(e)}
                 ></input>
               </label>
             </div>
@@ -222,7 +238,8 @@ export default function UpdateTherapist(props) {
                   type="text"
                   name="n1"
                   placeholder="n1"
-                  value={therapist.n1}
+                  value={specificTherapist.n1}
+                  onChange={e => updateValue(e)}
                 ></input>
               </label>
             </div>
@@ -233,7 +250,8 @@ export default function UpdateTherapist(props) {
                   type="text"
                   name="n2"
                   placeholder="n2"
-                  value={therapist.n2}
+                  value={specificTherapist.n2}
+                  onChange={e => updateValue(e)}
                 ></input>
               </label>
             </div>
@@ -244,7 +262,8 @@ export default function UpdateTherapist(props) {
                   type="text"
                   name="n3"
                   placeholder="n3"
-                  value={therapist.n3}
+                  value={specificTherapist.n3}
+                  onChange={e => updateValue(e)}
                 ></input>
               </label>
             </div>
@@ -255,7 +274,8 @@ export default function UpdateTherapist(props) {
                   type="text"
                   name="n4"
                   placeholder="n4"
-                  value={therapist.n4}
+                  value={specificTherapist.n4}
+                  onChange={e => updateValue(e)}
                 ></input>
               </label>
             </div>
@@ -268,7 +288,8 @@ export default function UpdateTherapist(props) {
                   type="text"
                   name="bach"
                   placeholder="Bach"
-                  value={therapist.Bach}
+                  value={specificTherapist.Bach}
+                  onChange={e => updateValue(e)}
                 ></input>
               </label>
             </div>
@@ -279,7 +300,8 @@ export default function UpdateTherapist(props) {
                   type="text"
                   name="certified"
                   placeholder="Certified"
-                  value={therapist.certified}
+                  value={specificTherapist.certified}
+                  onChange={e => updateValue(e)}
                 ></input>
               </label>
             </div>
@@ -290,7 +312,8 @@ export default function UpdateTherapist(props) {
                   type="text"
                   name="seminarsTaken"
                   placeholder="Seminars Taken"
-                  value={therapist.seminarsTaken}
+                  value={specificTherapist.seminarsTaken}
+                  onChange={e => updateValue(e)}
                 ></input>
               </label>
             </div>
@@ -301,7 +324,8 @@ export default function UpdateTherapist(props) {
                   type="text"
                   name="website"
                   placeholder="Website"
-                  value={therapist.website}
+                  value={specificTherapist.website}
+                  onChange={e => updateValue(e)}
                 ></input>
               </label>
             </div>
