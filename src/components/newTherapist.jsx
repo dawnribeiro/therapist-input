@@ -4,6 +4,7 @@ import axios from 'axios'
 export default function NewTherapist() {
   const [therapist, setTherapist] = useState({})
   const [allTherapists, setAllTherapists] = useState({})
+  const addedTherapist = allTherapists[0].LastName
 
   useEffect(() => {
     axios
@@ -15,6 +16,7 @@ export default function NewTherapist() {
   }, [])
 
   const addTherapist = e => {
+    e.preventDefault()
     const data = { ...therapist }
     axios
       .post(
@@ -34,12 +36,19 @@ export default function NewTherapist() {
       return data
     })
   }
+  const mapTherapist = allTherapists.map(therapist => {
+    return (
+      <li>
+        <p>{therapist.LastName}</p>
+      </li>
+    )
+  })
 
   return (
     <section>
       <div>
         <form className="ui equal width form" onSubmit={addTherapist}>
-          <div class="fields">
+          <div className="fields">
             <div className="field">
               <label>
                 First Name
@@ -85,7 +94,7 @@ export default function NewTherapist() {
               </label>
             </div>
           </div>
-          <div class="fields">
+          <div className="fields">
             <div className="field">
               <label>
                 Street Address
@@ -142,7 +151,7 @@ export default function NewTherapist() {
               </label>
             </div>
           </div>
-          <div class="fields">
+          <div className="fields">
             <div className="field">
               <label>
                 p101
@@ -199,7 +208,7 @@ export default function NewTherapist() {
               </label>
             </div>
           </div>
-          <div class="fields">
+          <div className="fields">
             <div className="field">
               <label>
                 p202
@@ -256,7 +265,7 @@ export default function NewTherapist() {
               </label>
             </div>
           </div>
-          <div class="fields">
+          <div className="fields">
             <div className="field">
               <label>
                 Bach
@@ -306,15 +315,7 @@ export default function NewTherapist() {
         </form>
       </div>
       <div>
-        {/* <ul>
-          {allTherapists.map(m => {
-            return (
-              <li>
-                <p>{m.LastName}</p>
-              </li>
-            )
-          })}
-        </ul> */}
+        <ul>{addedTherapist ? mapTherapist : 'No Therapist'}</ul>
       </div>
     </section>
   )
