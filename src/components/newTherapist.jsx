@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
+import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom'
 
 export default function NewTherapist() {
   const [therapist, setTherapist] = useState([])
@@ -319,6 +320,9 @@ export default function NewTherapist() {
           </div>
           <button>Submit</button>
         </form>
+      </div>
+      <div>
+        <Link to="/Import">Or upload file</Link>
       </div>
       <div>
         <ul>
