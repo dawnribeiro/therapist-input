@@ -165,7 +165,7 @@ export default function NewTherapist() {
                 <input
                   type="text"
                   name="p101"
-                  placeholder="p101"
+                  placeholder="mm/dd/yy"
                   onChange={e => updateValue(e)}
                 ></input>
               </label>
@@ -176,7 +176,7 @@ export default function NewTherapist() {
                 <input
                   type="text"
                   name="s1"
-                  placeholder="s1"
+                  placeholder="mm/dd/yy"
                   onChange={e => updateValue(e)}
                 ></input>
               </label>
@@ -187,7 +187,7 @@ export default function NewTherapist() {
                 <input
                   type="text"
                   name="s2"
-                  placeholder="s2"
+                  placeholder="mm/dd/yy"
                   onChange={e => updateValue(e)}
                 ></input>
               </label>
@@ -198,7 +198,7 @@ export default function NewTherapist() {
                 <input
                   type="text"
                   name="s3"
-                  placeholder="s3"
+                  placeholder="mm/dd/yy"
                   onChange={e => updateValue(e)}
                 ></input>
               </label>
@@ -209,7 +209,7 @@ export default function NewTherapist() {
                 <input
                   type="text"
                   name="s4"
-                  placeholder="s4"
+                  placeholder="mm/dd/yy"
                   onChange={e => updateValue(e)}
                 ></input>
               </label>
@@ -222,7 +222,7 @@ export default function NewTherapist() {
                 <input
                   type="text"
                   name="p202"
-                  placeholder="p202"
+                  placeholder="mm/dd/yy"
                   onChange={e => updateValue(e)}
                 ></input>
               </label>
@@ -233,7 +233,7 @@ export default function NewTherapist() {
                 <input
                   type="text"
                   name="n1"
-                  placeholder="n1"
+                  placeholder="mm/dd/yy"
                   onChange={e => updateValue(e)}
                 ></input>
               </label>
@@ -244,7 +244,7 @@ export default function NewTherapist() {
                 <input
                   type="text"
                   name="n2"
-                  placeholder="n2"
+                  placeholder="mm/dd/yy"
                   onChange={e => updateValue(e)}
                 ></input>
               </label>
@@ -255,7 +255,7 @@ export default function NewTherapist() {
                 <input
                   type="text"
                   name="n3"
-                  placeholder="n3"
+                  placeholder="mm/dd/yy"
                   onChange={e => updateValue(e)}
                 ></input>
               </label>
@@ -266,7 +266,7 @@ export default function NewTherapist() {
                 <input
                   type="text"
                   name="n4"
-                  placeholder="n4"
+                  placeholder="mm/dd/yy"
                   onChange={e => updateValue(e)}
                 ></input>
               </label>
@@ -279,7 +279,7 @@ export default function NewTherapist() {
                 <input
                   type="text"
                   name="bach"
-                  placeholder="Bach"
+                  placeholder="mm/dd/yy"
                   onChange={e => updateValue(e)}
                 ></input>
               </label>
@@ -290,7 +290,7 @@ export default function NewTherapist() {
                 <input
                   type="text"
                   name="certified"
-                  placeholder="Certified"
+                  placeholder="mm/dd/yy"
                   onChange={e => updateValue(e)}
                 ></input>
               </label>

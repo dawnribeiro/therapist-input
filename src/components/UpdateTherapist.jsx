@@ -36,7 +36,7 @@ export default function UpdateTherapist(props) {
     const value = e.target.value
     setSpecificTherapist(data => {
       data[name] = value
-      return data
+      return { ...data }
     })
   }
 
@@ -163,7 +163,7 @@ export default function UpdateTherapist(props) {
                 <input
                   type="text"
                   name="p101"
-                  placeholder="p101"
+                  placeholder="mm/dd/yy"
                   value={specificTherapist.p101}
                   onChange={e => updateValue(e)}
                 ></input>
@@ -175,7 +175,7 @@ export default function UpdateTherapist(props) {
                 <input
                   type="text"
                   name="s1"
-                  placeholder="s1"
+                  placeholder="mm/dd/yy"
                   value={specificTherapist.s1}
                   onChange={e => updateValue(e)}
                 ></input>
@@ -187,7 +187,7 @@ export default function UpdateTherapist(props) {
                 <input
                   type="text"
                   name="s2"
-                  placeholder="s2"
+                  placeholder="mm/dd/yy"
                   value={specificTherapist.s2}
                   onChange={e => updateValue(e)}
                 ></input>
@@ -199,7 +199,7 @@ export default function UpdateTherapist(props) {
                 <input
                   type="text"
                   name="s3"
-                  placeholder="s3"
+                  placeholder="mm/dd/yy"
                   value={specificTherapist.s3}
                   onChange={e => updateValue(e)}
                 ></input>
@@ -211,7 +211,7 @@ export default function UpdateTherapist(props) {
                 <input
                   type="text"
                   name="s4"
-                  placeholder="s4"
+                  placeholder="mm/dd/yy"
                   value={specificTherapist.s4}
                   onChange={e => updateValue(e)}
                 ></input>
@@ -225,7 +225,7 @@ export default function UpdateTherapist(props) {
                 <input
                   type="text"
                   name="p202"
-                  placeholder="p202"
+                  placeholder="mm/dd/yy"
                   value={specificTherapist.p202}
                   onChange={e => updateValue(e)}
                 ></input>
@@ -237,7 +237,7 @@ export default function UpdateTherapist(props) {
                 <input
                   type="text"
                   name="n1"
-                  placeholder="n1"
+                  placeholder="mm/dd/yy"
                   value={specificTherapist.n1}
                   onChange={e => updateValue(e)}
                 ></input>
@@ -249,7 +249,7 @@ export default function UpdateTherapist(props) {
                 <input
                   type="text"
                   name="n2"
-                  placeholder="n2"
+                  placeholder="mm/dd/yy"
                   value={specificTherapist.n2}
                   onChange={e => updateValue(e)}
                 ></input>
@@ -261,7 +261,7 @@ export default function UpdateTherapist(props) {
                 <input
                   type="text"
                   name="n3"
-                  placeholder="n3"
+                  placeholder="mm/dd/yy"
                   value={specificTherapist.n3}
                   onChange={e => updateValue(e)}
                 ></input>
@@ -273,7 +273,7 @@ export default function UpdateTherapist(props) {
                 <input
                   type="text"
                   name="n4"
-                  placeholder="n4"
+                  placeholder="mm/dd/yy"
                   value={specificTherapist.n4}
                   onChange={e => updateValue(e)}
                 ></input>
@@ -287,7 +287,7 @@ export default function UpdateTherapist(props) {
                 <input
                   type="text"
                   name="bach"
-                  placeholder="Bach"
+                  placeholder="mm/dd/yy"
                   value={specificTherapist.Bach}
                   onChange={e => updateValue(e)}
                 ></input>
@@ -299,7 +299,7 @@ export default function UpdateTherapist(props) {
                 <input
                   type="text"
                   name="certified"
-                  placeholder="Certified"
+                  placeholder="mm/dd/yy"
                   value={specificTherapist.certified}
                   onChange={e => updateValue(e)}
                 ></input>

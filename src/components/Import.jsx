@@ -26,20 +26,51 @@ class Import extends Component {
           .fromString(fileAsBinaryString)
           .then(csvRows => {
             const toJson = []
-            csvRows.forEach((aCsvRow, i) => {
-              if (i !== 0) {
-                const builtObject = {}
+            console.log({ csvRows })
 
-                Object.keys(aCsvRow).forEach(aKey => {
-                  const valueToAddInBuiltObject = aCsvRow[aKey]
-                  const keyToAddInBuiltObject = csvRows[0][aKey]
-                  builtObject[keyToAddInBuiltObject] = valueToAddInBuiltObject
+            const thangs = csvRows
+              .filter(f => f.field2)
+              .map(row => {
+                return {
+                  firstName: row.field2,
+                  lastName: row.field1,
+                  workPhone: row.field3,
+                  homePhone: row.field4,
+                  street: row.field5,
+                  city: row.field6,
+                  state: row.field7,
+                  zip: row.field8,
+                  email: row.field9,
+                  p101: row.field10,
+                  s1: row.field11,
+                  s2: row.field12,
+                  s3: row.field13,
+                  s4: row.field14,
+                  p202: row.field15,
+                  n1: row.field16,
+                  n2: row.field17,
+                  n3: row.field18,
+                  n4: row.field19,
+                  bach: row.field20,
+                  certified: row.field21,
+                  seminarsTaken: row.field22,
+                  website: row.field23,
+                }
+              })
+            console.log({ thangs })
+            // post all the whole
+            // set thangs into state
+            // display files uploaded
+            thangs.forEach(therapist => {
+              axios
+                .post(
+                  'https://neurosomatic-therapist-api.herokuapp.com/api/Therapist',
+                  therapist
+                )
+                .then(resp => {
+                  console.log('new therapist added', resp.data)
                 })
-
-                toJson.push(builtObject)
-              }
             })
-            this.props.onDrop(toJson)
           })
       }
 
