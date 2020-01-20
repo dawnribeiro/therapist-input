@@ -321,10 +321,10 @@ export default function NewTherapist() {
           <button>Submit</button>
         </form>
       </div>
-      <div>
+      {/* <div>
         <Link to="/Import">Or upload file</Link>
-      </div>
-      <div>
+      </div> */}
+      {/* <div>
         <ul>
           {allTherapists.map(therapist => {
             return (
@@ -340,7 +340,7 @@ export default function NewTherapist() {
             )
           })}
         </ul>
-      </div>
+      </div> */}
     </section>
   )
 }
