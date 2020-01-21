@@ -1,5 +1,4 @@
-import React, { useState, useEffect } from 'react'
-import axios from 'axios'
+import React from 'react'
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom'
 
 export default function NavMenu() {
@@ -14,9 +13,7 @@ export default function NavMenu() {
       <Link to="/import" className="item">
         Upload Therapist
       </Link>
-      <Link to="/all" className="item">
-        All Therapists
-      </Link>
+
       <Link to="/search" className="item">
         Search Therapist
       </Link>

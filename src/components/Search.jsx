@@ -1,26 +1,28 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import Axios from 'axios'
+import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom'
 
 export default function Search() {
-  const [therapist, setTherapist] = useState({})
+  const [therapist, setTherapist] = useState([])
   const [therapistLastName, setTherapistLastName] = useState([])
 
   const updateValue = e => {
     const name = e.target.name
     const value = e.target.value
-    setTherapist(data => {
+    setTherapistLastName(data => {
       data[name] = value
+      console.log(therapistLastName)
       return data
     })
   }
 
-  const searchTherapist = therapist => {
-    let searching = therapist.lastName
+  const searchTherapist = e => {
+    e.preventDefault()
     Axios.get(
-      `https://neurosomatic-therapist-api.herokuapp.com/api/Therapist/lastName/${searching}`
+      `https://neurosomatic-therapist-api.herokuapp.com/api/Therapist/lastName/${therapistLastName.name}`
     ).then(resp => {
-      setTherapistLastName(resp.data)
-      console.log(therapistLastName)
+      setTherapist(resp.data)
+      console.log(resp.data, 'searching')
     })
   }
 
@@ -42,6 +44,25 @@ export default function Search() {
             <i className="search link icon"></i>
           </div>
         </div>
+      </div>
+      <div>
+        <ul>
+          {therapist.map(t => {
+            let last = t.lastName
+            let wholeName = t.firstName && t.lastName
+            return (
+              <li>
+                <p>
+                  {t.firstName} {t.lastName}
+                </p>
+                {/* <p>{wholeName ? wholeName : 'Not found'}</p> */}
+                <button>
+                  <Link to={'/updateTherapist/' + t.id}>Update</Link>
+                </button>
+              </li>
+            )
+          })}
+        </ul>
       </div>
     </section>
   )

@@ -1,19 +1,8 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import axios from 'axios'
-import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom'
 
 export default function NewTherapist() {
   const [therapist, setTherapist] = useState([])
-  const [allTherapists, setAllTherapists] = useState([])
-
-  useEffect(() => {
-    axios
-      .get('https://neurosomatic-therapist-api.herokuapp.com/api/Therapist')
-      .then(resp => {
-        setAllTherapists(resp.data)
-        console.log(resp.data)
-      })
-  }, [])
 
   const addTherapist = e => {
     e.preventDefault()
@@ -321,26 +310,6 @@ export default function NewTherapist() {
           <button>Submit</button>
         </form>
       </div>
-      {/* <div>
-        <Link to="/Import">Or upload file</Link>
-      </div> */}
-      {/* <div>
-        <ul>
-          {allTherapists.map(therapist => {
-            return (
-              <li>
-                <p>{therapist.lastName}</p>
-                <button onClick={() => deleteTherapist(therapist)}>
-                  Delete
-                </button>
-                <button>
-                  <Link to={'/updateTherapist/' + therapist.id}>Update</Link>
-                </button>
-              </li>
-            )
-          })}
-        </ul>
-      </div> */}
     </section>
   )
 }
